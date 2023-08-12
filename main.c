@@ -22,7 +22,7 @@
  * experiences with one another.
  *  
  * main.c 
- * Last edited: 2023/8/6
+ * Last edited: 2023/8/12
  ******************************************************************************/
 
 
@@ -38,45 +38,46 @@ int main(void) {
     srand((unsigned)time(NULL)) ;
 
 
-    int dice1 = rand() % 6 + 1;
-    int dice2 = rand() % 6 + 1;
-    int dice3 = rand() % 6 + 1;
+    int die1 = rand() % 6 + 1;
+    int die2 = rand() % 6 + 1;
+    int die3 = rand() % 6 + 1;
 
     int max = 0;
     int middle = 0;
     int min = 0;
     
-    if (dice1 >= dice2 && dice1 >= dice3) {
-        max = dice1;
-        if (dice2 >= dice3) {
-            middle = dice2;
-            min = dice3;
+    // 三粒骰子排序
+    if (die1 >= die2 && die1 >= die3) {
+        max = die1;
+        if (die2 >= die3) {
+            middle = die2;
+            min = die3;
         }
         else {
-            middle = dice3;
-            min = dice2;
+            middle = die3;
+            min = die2;
         }
     }
-    else if (dice2 >= dice1 && dice2 >= dice3) {
-        max = dice2;
-        if (dice1 >= dice3) {
-            middle = dice1;
-            min = dice3;
+    else if (die2 >= die1 && die2 >= die3) {
+        max = die2;
+        if (die1 >= die3) {
+            middle = die1;
+            min = die3;
         }
         else {
-            middle = dice3;
-            min = dice1;
+            middle = die3;
+            min = die1;
         }
     }
     else {
-        max = dice3;
-        if (dice1 >= dice2) {
-            middle = dice1;
-            min = dice2;
+        max = die3;
+        if (die1 >= die2) {
+            middle = die1;
+            min = die2;
         }
         else {
-            middle = dice2;
-            min = dice1;
+            middle = die2;
+            min = die1;
         }
     }
     
@@ -84,13 +85,13 @@ int main(void) {
     //value = 222;
     //printf("value = %d\n", value);
     
-    printf("骰子： %d %d %d\n", dice1, dice2, dice3);
+    printf("骰子： %d %d %d\n", die1, die2, die3);
     
     char Category[] = "";
     int sum;
-    sum = dice1 + dice2 + dice3;
+    sum = die1 + die2 + die3;
     
-    if ((dice1 == dice2) && (dice1 == dice3)) {
+    if ((die1 == die2) && (die1 == die3)) {
         memcpy(Category, category[0], strlen(category[0]));
     }
     else {
@@ -143,8 +144,8 @@ int main(void) {
 
 
     int Reward = 0;
-    if ((dice1 == dice2) && (dice1 == dice3)) {
-       switch(dice1) {
+    if ((die1 == die2) && (die1 == die3)) {
+       switch(die1) {
            case 1: case 4: case 6:
                Reward = 5;
                break;
